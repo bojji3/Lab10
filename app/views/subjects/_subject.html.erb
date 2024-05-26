@@ -1,27 +1,22 @@
 <div id="<%= dom_id subject %>">
-  <p>
-    <strong>Name:</strong>
-    <%= subject.name %>
-  </p>
+<body style="background-color: skyblue">
+<table border=0>
+  <tr align="center">
+  <th><strong style="color: white">Subject Name:</strong></th>
+  <th><strong style="color: red">Section:</strong></th>
+  <th><strongs tyle="color: yellow">Number of units:</strong></th>
+  <th><strong style="color: green">Number of students:</strong></th>
+  <th>strong style="color: white">Per unit rate:</strong></th>
+  </tr>
 
-  <p>
-    <strong>Section:</strong>
-    <%= subject.section %>
-  </p>
-
-  <p>
-    <strong>Number of units:</strong>
-    <%= subject.number_of_units %>
-  </p>
-
-  <p>
-    <strong>Number of students:</strong>
-    <%= subject.number_of_students %>
-  </p>
-
-  <p>
-    <strong>Per unit rate:</strong>
-    <%= subject.per_unit_rate %>
-  </p>
-
+  <tr>
+  <th> <%= subject.name %></th>
+  <th><%= subject.section %></th>
+  <th><%= subject.number_of_units %></th>
+  <th><%= subject.number_of_students %></th>
+  <th><%= subject.per_unit_rate %></th>
+  </tr>
+  
+</table>
+</body>
 </div>

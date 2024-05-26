@@ -1,6 +1,6 @@
 <%= form_with(model: subject) do |form| %>
   <% if subject.errors.any? %>
-    <div style="color: red">
+    <div style="color: red";font-family: "verdana"; font-size: 10px; font-style: italic;>
       <h2><%= pluralize(subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
 
       <ul>
