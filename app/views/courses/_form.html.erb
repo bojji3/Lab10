@@ -1,6 +1,6 @@
 <%= form_with(model: course) do |form| %>
   <% if course.errors.any? %>
-    <div style="color: red">
+    <div style="color: red; border: 1px solid black; background-color: lightblue; padding-top: 30px; padding-right: 20px; padding-bottom: 30px; padding-left: 20px">
       <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
 
       <ul>
