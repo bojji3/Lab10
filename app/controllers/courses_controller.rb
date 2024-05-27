@@ -25,6 +25,9 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
+        @course.student.update(number_of_units: (@course.student.number_of_units + @course.subject.number_of_units))
+        @course.student.update(total_assessment: (@course.student.total_assessment + (@course.subject.number_of_units * @course.subject.per_unit_rate)))
+        @course.subject.update(number_of_students: (@course.subject.number_of_students + 1))
         format.html { redirect_to course_url(@course), notice: "Course was successfully created." }
         format.json { render :show, status: :created, location: @course }
       else

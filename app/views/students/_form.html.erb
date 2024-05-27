@@ -1,37 +1,93 @@
-<%= form_with(model: student) do |form| %>
-  <% if student.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .form-field {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            font-weight: 700;
+            color: #333;
+        }
+        .form-input {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .submit-button {
+            text-align: center;
+        }
+        .submit-button .btn-submit {
+            background-color: #87CEEB; /* Light Blue */
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 700;
+        }
+        .submit-button .btn-submit:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <%= form_with(model: student) do |form| %>
+            <% if student.errors.any? %>
+                <div class="error-message">
+                    <h2><%= pluralize(student.errors.count, 'error') %> prohibited this student from being saved:</h2>
+                    <ul>
+                        <% student.errors.each do |error| %>
+                            <li><%= error.full_message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
 
-      <ul>
-        <% student.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+            <div class="form-field">
+                <label class="form-label" for="student_name">Name</label>
+                <%= form.text_field :name, class: 'form-input', id: 'student_name' %>
+            </div>
+
+            <div class="form-field">
+                <label class="form-label" for="student_year_level">Year Level</label>
+                <%= form.number_field :year_level, class: 'form-input', id: 'student_year_level' %>
+            </div>
+
+            <div class="form-field">
+                <label class="form-label" for="student_number_of_units">Number of Units</label>
+                <%= form.number_field :number_of_units, class: 'form-input', id: 'student_number_of_units' %>
+            </div>
+
+            <div class="form-field">
+                <label class="form-label" for="student_total_assessment">Total Assessment</label>
+                <%= form.text_field :total_assessment, class: 'form-input', id: 'student_total_assessment' %>
+            </div>
+
+            <div class="submit-button">
+                <%= form.submit 'Submit', class: 'btn-submit' %>
+            </div>
         <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :year_level, style: "display: block" %>
-    <%= form.number_field :year_level %>
-  </div>
-
-  <div>
-    <%= form.label :number_of_units, style: "display: block" %>
-    <%= form.number_field :number_of_units %>
-  </div>
-
-  <div>
-    <%= form.label :total_assessment, style: "display: block" %>
-    <%= form.text_field :total_assessment %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</body>
+</html>

@@ -1,42 +1,109 @@
-<%= form_with(model: subject) do |form| %>
-  <% if subject.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Form</title>
+  <style>
+    /* Global styles */
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
 
-      <ul>
-        <% subject.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+    /* Form container */
+    .my-form {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    /* Form field styles */
+    .form-field {
+      margin-bottom: 20px;
+    }
+
+    .form-field label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .form-field input[type="text"],
+    .form-field input[type="number"] {
+      width: 95%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    /* Submit button */
+    .form-actions {
+      text-align: center;
+    }
+
+    .form-actions .submit-button {
+      background-color: #ADD8E6; /* Light blue color */
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .form-actions .submit-button:hover {
+      background-color: #007bff; /* Darker shade on hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="my-form">
+    <%= form_with(model: subject, html: { class: 'my-form' }) do |form| %>
+      <% if subject.errors.any? %>
+        <div class="error-message">
+          <h2><%= pluralize(subject.errors.count, 'error') %> prohibited this subject from being saved:</h2>
+          <ul>
+            <% subject.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-field">
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :section %>
+        <%= form.text_field :section %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :number_of_units %>
+        <%= form.number_field :number_of_units %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :number_of_students %>
+        <%= form.number_field :number_of_students %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :per_unit_rate %>
+        <%= form.text_field :per_unit_rate %>
+      </div>
+
+      <div class="form-actions">
+        <%= form.submit 'Submit', class: 'submit-button' %>
+      </div>
+    <% end %>
   </div>
-
-  <div>
-    <%= form.label :section, style: "display: block" %>
-    <%= form.text_field :section %>
-  </div>
-
-  <div>
-    <%= form.label :number_of_units, style: "display: block" %>
-    <%= form.number_field :number_of_units %>
-  </div>
-
-  <div>
-    <%= form.label :number_of_students, style: "display: block" %>
-    <%= form.number_field :number_of_students %>
-  </div>
-
-  <div>
-    <%= form.label :per_unit_rate, style: "display: block" %>
-    <%= form.text_field :per_unit_rate %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</body>
+</html>

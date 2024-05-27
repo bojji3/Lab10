@@ -1,9 +1,40 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# Seed Subjects
+subjects = []
+5.times do |n|
+  subjects << Subject.create(name: "Subject #{n + 1}")
+end
+
+# Seed Students
+students = []
+10.times do |n|
+  students << Student.create(name: "Student #{n + 1}")
+end
+
+# Seed Courses
+courses_count = 10  # Number of courses you want to create
+
+courses_count.times do
+  subject = subjects.sample
+  student = students.sample
+
+  Course.create!(
+    subject: subject,
+    student: student
+  )
+end
+
+# Example of Seeded Data
+puts "Seeded Subjects:"
+Subject.all.each do |subject|
+  puts "ID: #{subject.id}, Name: #{subject.name}"
+end
+
+puts "\nSeeded Students:"
+Student.all.each do |student|
+  puts "ID: #{student.id}, Name: #{student.name}"
+end
+
+puts "\nSeeded Courses:"
+Course.all.each do |course|
+  puts "ID: #{course.id}, Subject ID: #{course.subject_id}, Student ID: #{course.student_id}"
+end

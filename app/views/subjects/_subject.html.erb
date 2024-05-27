@@ -1,27 +1,56 @@
-<div id="<%= dom_id subject %>">
-  <p>
-    <strong>Name:</strong>
-    <%= subject.name %>
-  </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Information</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .subject-container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: #f9f9f9;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .subject-label {
+            font-weight: 700;
+            color: #333;
+        }
+        .subject-info {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="subject-container" id="<%= dom_id subject %>">
+        <p class="subject-label"><strong>SUBJECT:</strong></p>
 
-  <p>
-    <strong>Section:</strong>
-    <%= subject.section %>
-  </p>
+        <p class="subject-info">
+            <strong>Name:</strong> <%= subject.name %>
+        </p>
 
-  <p>
-    <strong>Number of units:</strong>
-    <%= subject.number_of_units %>
-  </p>
+        <p class="subject-info">
+            <strong>Section:</strong> <%= subject.section %>
+        </p>
 
-  <p>
-    <strong>Number of students:</strong>
-    <%= subject.number_of_students %>
-  </p>
+        <p class="subject-info">
+            <strong>Number of units:</strong> <%= subject.number_of_units %>
+        </p>
 
-  <p>
-    <strong>Per unit rate:</strong>
-    <%= subject.per_unit_rate %>
-  </p>
+        <p class="subject-info">
+            <strong>Number of students:</strong> <%= subject.number_of_students %>
+        </p>
 
-</div>
+        <p class="subject-info">
+            <strong>Per unit rate:</strong> <%= subject.per_unit_rate %>
+        </p>
+    </div>
+</body>
+</html>
